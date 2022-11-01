@@ -1,5 +1,8 @@
 
 import React from "react";
+import Login from './login/Login';
+import './App.css';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,14 +19,13 @@ const NoPage = () => {
 
 function App() {
   return (
-    
+<div className="App">
   <Router>
-    <div>
-      <h1>Prueba</h1>
-    </div>
-    <Switch>
-    <Route path="*/blockme" element={<NoPage />}>
-    <h1>Bloqueado</h1>     
+
+    
+     <Switch>
+      <Route path="*/blockme" element={<NoPage />}>
+        <h1>Bloqueado</h1>     
   
       </Route>
       
@@ -34,10 +36,13 @@ function App() {
         </h1>
   
       </Route>
-    </Switch>
+      </Switch>
         
-   
+      
+      <Login></Login>
+    
   </Router>
+</div>
   );
 }
 
