@@ -40,7 +40,7 @@ function Register(props) {
                 "userName":nameRef.current.value,
                 "name":userRef.current.value,
                 "password":passRef.current.value,
-                "ADMIN":0,
+                "ADMIN":1,
                 "MAIL":mailRef.current.value
             })
         };
@@ -104,6 +104,7 @@ function Register(props) {
           
             </div>
             <button className="main-btn" onClick={e => onRegister(e)}>Registrar</button>
+        
 
             <div className="session">
                 < button className="session-btn" onClick={e => outRegister(e)} >Salir</button>

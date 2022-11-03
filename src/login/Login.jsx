@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import Register from '../register/Register';
+import MainWeb from '../mainWeb/MainWeb';
 import './Login.css';
 
 
@@ -11,6 +12,8 @@ function Login() {
     const [client, setClient] = useState({
         "user": "",
         "password": "",
+        "name":"",
+        "type":""
        
     });
 
@@ -24,11 +27,63 @@ function Login() {
       const onLogin = (e) => {
         e.preventDefault();
         
-        setClient({
-            "user": nameRef.current.value,
-            "password": passRef.current.value,
-     
-        });
+
+
+
+        let url = 'https://g5ab0d028fce44a-proyecto.adb.us-phoenix-1.oraclecloudapps.com/ords/proyecto/proyecto/login/'
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "userName":nameRef.current.value,
+                "password":passRef.current.value
+            })
+        };
+        fetch(url, requestOptions)
+            .then(async response => {
+                const data = await response.json();
+
+                
+
+                if (data.ingreso==='1') {
+                    
+                    setClient({
+
+                        ...client,
+                        "user":nameRef.current.value,
+                        "name":data.name,
+                        "type":data.type
+
+
+                    })
+
+                    setRegister({
+                        ...register,
+                        "register": false,
+                        "message": "",
+                    })
+                   
+                    return data;
+                    
+                }else{
+                    
+                    setRegister({
+                        ...register,
+                        "register": false,
+                        "message": "Credenciales no coinciden",
+                    })
+                }
+                const errorData = await response.json();
+                return Promise.reject(errorData);
+            }
+            
+            )
+
+            
+
+
+
+
 
     }
 
@@ -96,11 +151,18 @@ function Login() {
                
                  }
 
+                {register.message &&
+                    <div className="error-lbl">
+                     <p>{register.message}</p>
+                     </div>}
+
 
                 
 
                      {client.user &&
-                          <div className="session">
+                          <div>
+                            
+                        <MainWeb user={client} setUser={setClient}></MainWeb>
                     
                           </div>
                       }

@@ -25,21 +25,21 @@ function App() {
     
      <Switch>
       <Route path="*/blockme" element={<NoPage />}>
-        <h1>Bloqueado</h1>     
-  
+        <h1>Bloqueado</h1>   
+       
       </Route>
       
       
-      <Route path="/login">
-        <h1>
-          <h1>login</h1>
-        </h1>
+      <Route path="/">
+        
+        <Login></Login>
+        
   
       </Route>
       </Switch>
         
       
-      <Login></Login>
+      
     
   </Router>
 </div>

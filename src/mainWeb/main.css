@@ -1,0 +1,15 @@
+
+
+.field-group-main {
+    background: rgb(88, 177, 180);
+    box-shadow: 0 0 2rem #3a4041;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    color: #000000;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  
