@@ -145,8 +145,9 @@ return false
 
   {isBlock() &&
       <div>
-      {ipBlock.map(ipBlocker => <p key={ipBlocker.ip}>IP: {ipBlocker.ip}     Descripcion: {ipBlocker.descrip}</p>)}
-      <p>Si estas bloqueado</p>
+      
+      <p>Si estas bloqueado por la ip</p>
+      <p>Por el grupos F {ip}</p>
       </div>
       }
 
