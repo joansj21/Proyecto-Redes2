@@ -32,7 +32,7 @@ function Register(props) {
         });
 
 
-        let url = 'https://g5ab0d028fce44a-proyecto.adb.us-phoenix-1.oraclecloudapps.com/ords/proyecto/proyecto/register/'
+        let url = 'https://www.grupof.meseguercr.com/register'
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },

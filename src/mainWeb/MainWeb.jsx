@@ -46,6 +46,9 @@ function MainWeb(props) {
             <div className="field-group-main">
             <p>Bienvenido a la pagina {props.user.name}</p>
             </div>
+            <div>
+            <img src="assets/user.png" alt="description of image"></img>
+            </div>
 
             
         </div>}
@@ -61,7 +64,8 @@ function MainWeb(props) {
             
             {!register.register &&<div className="field-group-login">
             < button className="main-btn" onClick={e => registerAdmin(e)} >Registrar Administrador</button>
-            </div>}
+            </div>
+            }
             {register.register &&
             
             <Register register={register} setRegister={setRegister}></Register>
@@ -74,9 +78,12 @@ function MainWeb(props) {
             </div>
 
             
-
+            <div>
+            <img src="assets/Among.png" alt="description of image"></img>
+            </div>
             
         </div>
+        
         
         
         }

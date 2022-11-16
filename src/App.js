@@ -1,10 +1,12 @@
 
 import React from "react";
 import Login from './login/Login';
+import Inicio from './inicio/Inicio';
 import './App.css';
 
 import axios from 'axios'
 import {useState,useEffect} from 'react'
+;
 
 import {
   BrowserRouter as Router,
@@ -54,10 +56,10 @@ useEffect( () => {
 useEffect(() => {
 
   if(blockRefresh.block===false){
-let url = 'https://g5ab0d028fce44a-proyecto.adb.us-phoenix-1.oraclecloudapps.com/ords/proyecto/proyecto/ipBlock/'
+let url = 'https://www.grupof.meseguercr.com/ipBlock'
 const requestOptions = {
     method: 'get',
-    headers: {'Content-Type': 'application/json' },
+    headers: {'hola':'get','Content-Type': 'application/json' },
 
 };
 
@@ -90,7 +92,7 @@ const onBlock = (e) => {
 
 
 
-  let url = 'https://g5ab0d028fce44a-proyecto.adb.us-phoenix-1.oraclecloudapps.com/ords/proyecto/proyecto/ipBlock/'
+  let url = 'https://www.grupof.meseguercr.com/ipBlock2'
   const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json' },
@@ -116,8 +118,11 @@ const onBlock = (e) => {
     ...blockRefresh,
     "block":false
 })
-
-
+setBlockRefrehs({
+  ...blockRefresh,
+  "block":false
+})
+//window.location.reload()
 
 } 
 
@@ -136,7 +141,10 @@ return false
 
 }
 //////////////////////
-  
+const [index, setIndex] = useState({
+  "index": true,
+ 
+});
   
   return (
 <div className="App">
@@ -148,29 +156,58 @@ return false
       
       <p>Si estas bloqueado por la ip</p>
       <p>Por el grupos F {ip}</p>
+
+            <div>
+              <img src="assets/impostor.png" alt="description of image"></img>
+            </div>
       </div>
+      
       }
 
     {!isBlock() &&
       <div>
            <Switch>
-      <Route path="*/blockme" element={<NoPage />}>
-        <h1>Bloqueado</h1>   
+      <Route path="*/blockme" >
+
+        
+      <div>
+            <h1>Bloqueado</h1>  
+            <img src="assets/block.png" alt="description of image"></img>
+            
+      </div>
+       
+        
+        
        
       </Route>
       
       
       <Route path="/">
         
-        <Login></Login>
+        {index.index &&
+      
+          <div>
+          <Inicio index={index} setIndex={setIndex}></Inicio>
+
+          <div className="session">
+                < button className="session-btn" onClick={e => onBlock(e)} >Bloquearme</button>
+         </div>
+          </div>
+
+          
+        }
+
+        {!index.index &&
+        
+        <Login  index={index} setIndex={setIndex}></Login>
+        }
+
         
   
       </Route>
       </Switch>
 
-      <div className="session">
-                < button className="session-btn" onClick={e => onBlock(e)} >Bloquearme</button>
-         </div>
+      
 
       </div>
 

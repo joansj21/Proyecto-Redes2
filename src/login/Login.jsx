@@ -4,7 +4,7 @@ import MainWeb from '../mainWeb/MainWeb';
 import './Login.css';
 
 
-function Login() {
+function Login(props) {
    
     const nameRef = useRef(null);
     const passRef = useRef(null);
@@ -22,6 +22,28 @@ function Login() {
         "message": "",
        
     });
+
+    const onIndex = (e) => {
+        e.preventDefault();
+        
+        props.setIndex(
+            {
+
+                "index": true,
+            }
+        )
+
+
+        setClient({
+
+            ...client,
+            "user":"",
+            "name":"",
+            "type":""
+
+
+        })
+    }
     
 
       const onLogin = (e) => {
@@ -30,10 +52,10 @@ function Login() {
 
 
 
-        let url = 'https://g5ab0d028fce44a-proyecto.adb.us-phoenix-1.oraclecloudapps.com/ords/proyecto/proyecto/login/'
+        let url = 'https://www.grupof.meseguercr.com/login'
         const requestOptions = {
             method: 'POST',
-            headers: {'Content-Type': 'application/json' },
+            headers: {'hola':'POST','Content-Type': 'application/json' },
             body: JSON.stringify({
                 "userName":nameRef.current.value,
                 "password":passRef.current.value
@@ -117,7 +139,7 @@ function Login() {
                             <input ref={nameRef} type="text" name="name" id="name"/>
 
                             <label htmlFor="pass">Contraseña</label>
-                             <input ref={passRef} type="text" name="pass" id="pass"/>
+                             <input ref={passRef} type="password" name="pass" id="pass"/>
 
  
                       
@@ -126,9 +148,13 @@ function Login() {
 
                         <button className="main-btn" onClick={e => onRegister(e)}>Crear cuenta</button>
 
-                        <div className="">
-                    
+                        <div className="session">
+                             < button className="session-btn" onClick={e => onIndex(e)} >Salir</button>
                         </div>
+
+
+                        
+
 
 
                 </div>
