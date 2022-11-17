@@ -49,13 +49,17 @@ function Login(props) {
       const onLogin = (e) => {
         e.preventDefault();
         
+     
 
 
+        let url = 'http://localhost:3001/login/'+nameRef.current.value+'/'+passRef.current.value
 
-        let url = 'https://www.grupof.meseguercr.com/login'
+        
+        
+        
         const requestOptions = {
             method: 'POST',
-            headers: {'hola':'POST','Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json' },
             body: JSON.stringify({
                 "userName":nameRef.current.value,
                 "password":passRef.current.value
