@@ -51,7 +51,7 @@ function Register(props) {
                     props.setRegister({
                         ...props.player,
                         "register": false,
-                        "message": "Resgistrado",
+                        "message": "Registrado",
                     })
                     return response.json();
                     
