@@ -132,7 +132,7 @@ function Login(props) {
 
     return (
         <div>
-            <h3>Pagina AntiAtaques uuu</h3>
+            <h3>Pagina AntiAtaques aplicada</h3>
 
             {!client.user && !register.register &&
                 
