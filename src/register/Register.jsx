@@ -32,26 +32,25 @@ function Register(props) {
         });
 
 
-        let url = 'https://www.grupof.meseguercr.com/register'
+        let url = 'https://www.grupof.meseguercr.com/register/'+nameRef.current.value+"/"+userRef.current.value+'/'+passRef.current.value+'/'+0+'/'+mailRef.current.value+'/registerEnd'
+       
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "userName":nameRef.current.value,
-                "name":userRef.current.value,
-                "password":passRef.current.value,
-                "ADMIN":0,
-                "MAIL":mailRef.current.value
-            })
+           
         };
         fetch(url, requestOptions)
-            .then(async response => {
+            .then( response => {
                 
                 if (response.ok) {
+                    
+                    const data =  response.json();
+                    
+                   
                     props.setRegister({
                         ...props.player,
                         "register": false,
-                        "message": "Registrado",
+                        "message": "Exitoso",
                     })
                     return response.json();
                     
@@ -63,7 +62,7 @@ function Register(props) {
                         "message": "Nombre de usuario ya existe",
                     })
                 }
-                const errorData = await response.json();
+                const errorData =  response.json();
                 return Promise.reject(errorData);
             })
 

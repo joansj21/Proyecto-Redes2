@@ -32,7 +32,7 @@ function Register(props) {
         });
 
 
-        let url = 'https://www.grupof.meseguercr.com/register'
+        let url = 'https://www.grupof.meseguercr.com/register/'+nameRef.current.value+"/"+userRef.current.value+'/'+passRef.current.value+'/'+1+'/'+mailRef.current.value+'/registerEnd'
         const requestOptions = {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },
@@ -48,10 +48,14 @@ function Register(props) {
             .then(async response => {
                 
                 if (response.ok) {
+                    
+                    const data =  response.json();
+                    
+                   
                     props.setRegister({
                         ...props.player,
                         "register": false,
-                        "message": "Registrado",
+                        "message": "Exitoso",
                     })
                     return response.json();
                     
