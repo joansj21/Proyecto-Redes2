@@ -20,8 +20,8 @@ function Inicio(props) {
     <div>
 
             <div class="header">
-                <h1>Menu inicio prueba5</h1>
-                <p>Web de seguridad</p>
+                <h1>Menu inicio prueba</h1>
+                <p>Web de seguridad prueba lol</p>
                 <div class="hacker">
                         <img src="assets/hacker.png" alt="description of image"></img>
                 </div>
